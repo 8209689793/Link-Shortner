@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Link Shortener</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .input-group .btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #4caf50;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .result {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .result a {
+      font-weight: bold;
+      color: #4caf50;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Link Shortener</h1>
+    <div class="input-group">
+      <label>Enter URL:</label>
+      <input type="text" id="urlInput">
+    </div>
+    <div class="input-group">
+      <input type="button" value="Shorten" class="btn" onclick="shortenLink()">
+    </div>
+    <div class="result" id="result">
+    </div>
+  </div>
+
+  <script>
+    function shortenLink() {
+      var url = document.getElementById("urlInput").value;
+      var resultDiv = document.getElementById("result");
+
+      if (url.trim() === "") {
+        resultDiv.innerHTML = "Please enter a valid URL.";
+        return;
+      }
+
+      // Perform the link shortening logic here
+      // You can use an API or custom logic to generate a shortened link
+
+      // For demonstration purposes, let's assume we generate a shortened link by adding a random string to the domain
+      var shortenedLink = "https://your-domain.com/" + generateRandomString(6);
+      resultDiv.innerHTML = "Shortened link: <a href='" + shortenedLink + "'>" + shortenedLink + "</a>";
+    }
+
+    function generateRandomString(length) {
+      var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      var result = "";
+      for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      return result;
+    }
+  </script>
+</body>
+</html>
